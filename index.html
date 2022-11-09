@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="description" content="Free online base64 converter tool">
+    <meta name="author" content="Antoine Guédès, antoineguds@gmail.com">
+
+    <title>base64 Converter Tool</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <div class="container-lg py-4 mt-4">
+            <hgroup>
+                <h1 class="mb-0">Base64 Converter Tool</h1>
+                <p class="lead">A free online base64 converter tool</h2>
+            </hgroup>
+        </div>
+    </header>
+
+    <main>
+        <div class="container-lg">
+
+            <div class="text-bg-light p-4">
+                <form>
+                    <input type="file" onchange="convertToBase64(this.files)">
+                </form>
+            </div>
+
+            <h2 class="mt-4">How-to</h2>
+
+            <ol>
+                <li>Select the file you want to convert using the input above;</li>
+                <li>Open your browser developer tools:
+                    <ul>
+                        <li>Windows: <kbd><kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>i</kbd></kbd>;</li>
+                        <li>Mac: <kbd><kbd>option</kbd> + <kbd>cmd</kbd> + <kbd>i</kbd></kbd>;</li>
+                    </ul>
+                </li>
+                <li>Open the 'Console' tab;</li>
+                <li>Copy the base64 code shown in the console;</li>
+                <li>Paste the base64 code into your file (see examples below);</li>
+            </ol>
+
+            <h2 class="mt-4">Examples</h2>
+
+            <p>Background image:</p>
+            <pre class="text-bg-light p-4">.classsname {
+    background-image: url('[copied base64 code]');
+}</pre>
+
+            <p>Source image:</p>
+            <pre class="text-bg-light p-4">&lt;img src="[copied base64 code]"&gt;</pre>
+
+            <p>Web font:</p>
+            <pre class="text-bg-light p-4">@font-face {
+    font-family: '[font name]';
+    src: url('[copied base64 code]');
+    font-weight: [font-weight value];
+    font-style: [font-weight style];
+}</pre>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container py-4">
+            <p class="mb-0"><small class="text-muted">This online tool was created by <a href="https://antoineguedes.com" target="_blank">Antoine Guédès</a> on Nov 9, 2022.<br>
+                Feel free to use it or redistribute it for any kind of your projects — personal or commercial.<br>
+                If you have questions or would like to suggest something, you can drop me a line at antoineguds[at]gmail.com</small></p>
+        </div>
+    </footer>
+
+    <script type="text/javascript">
+        function convertToBase64 (files) {
+            // Clear console
+            console.clear()
+
+            // Read content file
+            const reader = new FileReader()
+            
+            // Once user loaded a file
+            reader.onload = (e) => {
+                // Show result in console
+                console.log(e.target.result)
+            }
+            
+            // Convert file to base64
+            reader.readAsDataURL(files[0])
+        }
+    </script>
+</body>
+</html>
